@@ -3,16 +3,16 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 
-# 1️⃣ LOAD DATASET (COMMA CSV)
+
 df = pd.read_csv("bank.csv")
 
-# Clean column names
+
 df.columns = df.columns.str.strip().str.lower()
 
 print("Columns:\n", df.columns)
 
 
-# 2️⃣ BASIC INFO
+
 
 print(df.head())
 print(df.info())
@@ -20,12 +20,12 @@ print(df.describe())
 print(df.describe(include="object"))
 
 
-# 3️⃣ MISSING VALUES
+
 
 print(df.isnull().sum())
 
 
-# 4️⃣ OUTLIER DETECTION
+
 
 plt.figure(figsize=(8,6))
 sns.boxplot(x=df["age"])
@@ -43,12 +43,11 @@ df = df[
 print("Shape after outlier removal:", df.shape)
 
 
-# 5️⃣ CLEANING
+
 
 df.drop_duplicates(inplace=True)
 
 
-# 6️⃣ VISUALIZATION
 
 sns.histplot(df["age"], bins=30, kde=True)
 plt.show()
@@ -63,8 +62,6 @@ plt.show()
 sns.countplot(x="deposit", data=df)
 plt.show()
 
-
-# 7️⃣ CAMPAIGN ANALYSIS
 
 plt.figure(figsize=(8,6))
 sns.boxplot(x="deposit", y="duration", data=df)
